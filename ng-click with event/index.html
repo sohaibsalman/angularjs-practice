@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/bootstrap.min.css">
+    <script src="./static/angular.min.js"></script>
+    <script src="./app.js"></script>
+    <title>Document</title>
+</head>
+<body ng-app="myApp" ng-controller="moviesController">
+
+    <div class="container">
+        <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Movie
+        </button>
+        <div ng-click="dropdown($event)" class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="right: 0; left:auto;" id="studentLoginDropdownMenu">
+            <a class="dropdown-item" >Avengers</a>
+            <a class="dropdown-item" >Justice Leage</a>
+            <a class="dropdown-item" >The Matrix</a>
+        </div>
+        <br> <br><br> <br><br> <br><br> <br><br> <br>
+    
+        <h1>Selected Movie</h1>
+        <h3>{{movieName}}</h3>
+    </div>
+    
+
+</body>
+
+<script src="./static/jquery-3.3.1.min.js"></script>
+<script src="./static/popper.min.js"></script>
+<script src="./static/bootstrap.min.js"></script>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./angular.min.js"></script>
+    <script src="./app.js"></script>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <title>CRUD APP</title>
+</head>
+<body ng-app="crud" ng-controller="moviesController">
+    <div class="container mt-4">
+        <h1>Movies CRUD Application</h1>
+        
+        <!-- Create Button -->
+        <div ng-show="createButton">
+            <button ng-click="create()" class="btn btn-primary">Create</button>
+        </div>
+
+
+        <!-- Add new movie form -->
+        <div ng-show="createForm">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Add Movie</h2>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">Movie Name</label>
+                        <input ng-model="name" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Genre</label>
+                        <input ng-model="genre" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Release Year</label>
+                        <input ng-model="year" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button ng-click="addMovie()" class="btn btn-success">Add</button>
+                        <button ng-click="showList()" class="btn btn-secondary">Back To list</button>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        
+        <div ng-show="showTable">
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>Movie Name</th>
+                        <th>Genre</th>
+                        <th>Release Year</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tbody>
+                        <tr ng-repeat="movie in movies">
+                            <td>{{movie.name}}</td>
+                            <td>{{movie.genre}}</td>
+                            <td>{{movie.year}}</td>
+                            <td>
+                                <button class="btn btn-success">Edit</button>
+                                <button class="btn btn-secondary">Details</button>
+                                <button ng-click="onDelete($event)" class="btn btn-danger" value={{movie.name}}>Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </thead>
+            </table>
+        </div>
+        
+    </div>
+</body>
+</html>

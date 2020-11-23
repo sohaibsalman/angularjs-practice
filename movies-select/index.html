@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Including angular from CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    
+    <!-- Including our custom js file from project directory -->
+    <script src="./app.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+    ng-app indicates starting of an angular application. 
+    Within this div we can write code for angular application,
+    and the browsers deals it as an angular code.
+
+    If we write any code related to angular outside this div, 
+    the browser will deal it as standard HTML.
+-->
+    <div ng-app="lab6" ng-controller="myMovie">
+        
+        <label>Select Movie</label>
+        <!-- ng-model binds a angular variable/model with html -->
+        <!-- 
+            ng-change will call a function getData() [this is a custom function,
+            it can be named as anything.] when a drop-down item is changed.
+         -->
+        <select ng-model="selectedMovie" ng-change="getData()">
+            <!-- ng-repeat works same as a loop (for-each loop) -->
+            <option ng-repeat="m in moviesList">{{m.name}}</option>
+        </select>
+
+        <table border="1px solid black">
+            <thead>
+                <tr>
+                    <th>Movie Name</th>
+                    <th>Genre</th>
+                    <th>Year</th>
+                    <th>Awards</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 
+                    ng-repeat will iterate all the elements in the 
+                    moviesList object in our controller, and will then 
+                    generate the required HTML
+                 -->
+                <tr ng-repeat="movie in moviesList">
+                    <td>{{movie.name}}</td>
+                    <td>{{movie.genre}}</td>
+                    <td>{{movie.year}}</td>
+                    <td>{{movie.award}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Selected Movie</h3>
+        <!-- displaying the name of the movie selected. {{}} is an expression -->
+        {{selectedMovie}}
+
+        <h3>Movie Info</h3>
+
+        <h5>Movie Name: {{data.name}}</h5>
+        <h5>Genre:  {{data.genre}}</h5>
+        <h5>Year: {{data.year}}</h5>
+
+        <!-- 
+            ng-click will call a function toggleCast() [custom function],
+            whenever this button is cliked.
+         -->
+        <button ng-click="toggleCast()">Show Cast</button>
+
+        <div ng-show="showCast">
+            <h3>Cast</h3>
+            <table border="1px solid black">
+                <thead>
+                    <tr>
+                        <th>Actor Name</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="c in cast">
+                        <td>{{c.name}}</td>
+                        <td>{{c.role}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>  <!-- ANGULAR APP ENDS -->
+</body>
+</html>
